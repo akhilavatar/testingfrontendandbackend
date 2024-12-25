@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const ChatButton = ({ onClick }) => (
-  <div className="fixed bottom-4 right-4">
+  <div className="fixed bottom-0 right-0 m-4">
     <button
       onClick={onClick}
       className="pointer-events-auto bg-blue-400 hover:bg-blue-500 text-white p-4 rounded-full shadow-lg shadow-blue-400/50 flex items-center gap-2"

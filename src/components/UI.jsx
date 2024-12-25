@@ -11,7 +11,6 @@ export const UI = ({ hidden }) => {
   const { chat, loading, message } = useChat();
   const { showAvatar, setShowAvatar } = useAvatar();
   
-  // Initialize keyboard controls
   useKeyboardControls();
 
   const sendMessage = () => {
@@ -25,9 +24,9 @@ export const UI = ({ hidden }) => {
   if (hidden) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-between p-4 flex-col pointer-events-none">
+    <div className="fixed inset-0 z-10 pointer-events-none">
       {showAvatar ? (
-        <>
+        <div className="w-[75%] h-[75%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between">
           <Header onClose={() => setShowAvatar(false)} />
           <ChatInput 
             inputRef={input}
@@ -35,10 +34,10 @@ export const UI = ({ hidden }) => {
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             disabled={loading || message}
           />
-        </>
+        </div>
       ) : (
         <ChatButton onClick={() => setShowAvatar(true)} />
       )}
     </div>
   );
-};
+}
